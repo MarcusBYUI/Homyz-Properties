@@ -1,59 +1,53 @@
-const ham = document.querySelector(".hamburger")
-const closeel = document.querySelector(".close-btn")
-const menu = document.querySelector(".menucontainer")
-const logo = document.querySelector(".hom")
-const disc = document.querySelector(".discover")
+const ham = document.querySelector(".hamburger");
+const closeel = document.querySelector(".close-btn");
+const menu = document.querySelector(".menucontainer");
+const logo = document.querySelector(".hom");
+const disc = document.querySelector(".discover");
 
+ham.addEventListener("click", () => {
+  menu.classList.add("show");
+  logo.classList.add("rel");
+  disc.classList.add("rel");
+  console.log(disc);
+});
+closeel.addEventListener("click", () => {
+  menu.classList.remove("show");
+  menu.classList.add("hide");
+  logo.classList.remove("rel");
+  disc.classList.remove("rel");
+  console.log(disc);
+});
 
-ham.addEventListener("click", () =>{
-    menu.classList.add('show') 
-    logo.classList.add('rel')
-    disc.classList.add('rel')
-    console.log(disc)
-})
-closeel.addEventListener("click", () =>{
-    menu.classList.remove('show')
-    menu.classList.add('hide')
-    logo.classList.remove('rel')
-    disc.classList.remove('rel')
-    console.log(disc)
-})
-
-
-
-"use strict";
+("use strict");
 
 productScroll();
 
 function productScroll() {
   let slider = document.getElementById("slider");
-  let next = document.getElementsByClassName("pro-next");
-  let prev = document.getElementsByClassName("pro-prev");
-  let slide = document.getElementById("slide");
+  let next = document.querySelector(".pro-next");
+  let prev = document.querySelector(".pro-prev");
   let item = document.getElementById("slide");
 
-  for (let i = 0; i < next.length; i++) {
-    //refer elements by class name
+  //refer elements by class name
 
-    let position = 0; //slider postion
+  let position = 0; //slider postion
 
-    prev[i].addEventListener("click", function() {
-      //click previos button
-      if (position > 0) {
-        //avoid slide left beyond the first item
-        position -= 1;
-        translateX(position); //translate items
-      }
-    });
+  prev.addEventListener("click", function () {
+    //click previos button
+    if (position > 0) {
+      //avoid slide left beyond the first item
+      position -= 1;
+      translateX(position); //translate items
+    }
+  });
 
-    next[i].addEventListener("click", function() {
-      if (position >= 0 && position < hiddenItems()) {
-        //avoid slide right beyond the last item
-        position += 1;
-        translateX(position); //translate items
-      }
-    });
-  }
+  next.addEventListener("click", function () {
+    if (position >= 0 && position < hiddenItems()) {
+      //avoid slide right beyond the last item
+      position += 1;
+      translateX(position); //translate items
+    }
+  });
 
   function hiddenItems() {
     //get hidden items
@@ -65,6 +59,7 @@ function productScroll() {
 
 function translateX(position) {
   //translate items
+  let slide = document.getElementById("slide");
   slide.style.left = position * -400 + "px";
 }
 
@@ -81,4 +76,3 @@ function getCount(parent, getChildrensChildren) {
   }
   return relevantChildren;
 }
-
